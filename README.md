@@ -1,5 +1,8 @@
 # Getting Started with Create React App
 
+<!-- weather API Key = df5c8b741ea861f3f74711ac7e2980d3 -->
+<!-- call by lat, lon api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key} -->
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

@@ -1,0 +1,24 @@
+/* Card */
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.card {
+  border: 2px solid #7dbf27;
+  border-radius: 20px;
+  box-shadow: 10px 5px 5px 1px #ddd;
+  width: 35%;
+  margin: 30px auto 30px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 25px;
+}
+
+.card > hr {
+  width: 50%;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+}

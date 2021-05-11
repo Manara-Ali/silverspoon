@@ -1,0 +1,68 @@
+/* GREETINGS */
+.greetings {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 15px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+/* WHAT'S IN YOUR FRIDGE */
+.stacked {
+  display: flex;
+  flex-direction: column;
+}
+
+.current-ingredients,
+.current-mood,
+.instructions,
+.suggestions {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.current-ingredients-text,
+.current-mood-text,
+.instructions-text,
+.suggestions-text {
+  width: 50%;
+  padding-left: 50px;
+  padding-right: 50px;
+  line-height: 2em;
+}
+
+.current-ingredients-text a,
+.current-mood-text a,
+.instructions-text a,
+.suggestions-text a {
+  color: #7dbf27;
+  text-decoration: none;
+}
+
+.current-ingredients-image,
+.current-mood-image,
+.instructions-image,
+.suggestions-image {
+  max-width: 50%;
+  margin-left: 50px;
+}
+
+.current-ingredients-image > img,
+.current-mood-image > img,
+.instructions-image > img,
+.suggestions-image > img {
+  border: 3px solid #7dbf27;
+  border-radius: 10px;
+  box-shadow: 10px 5px 5px 1px #ddd;
+}
+
+.footer {
+  background-color: #ccc;
+  text-align: center;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
