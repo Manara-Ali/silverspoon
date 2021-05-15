@@ -13,9 +13,6 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 // STEP 3. CREATE CLASS BASED COMPONENT
 
-// I WILL BE USING THE LATITUDE AND LONGITUDE AT MULTIPLE LOCATIONS SO LET'S GO AHEAD AND STORE THEM
-let latitude, longitude;
-
 class App extends React.Component {
   // CREATE A STATE TO KEEP TRACK OF THE API DATA
   constructor(props) {
@@ -23,6 +20,9 @@ class App extends React.Component {
 
     this.state = {
       location: [],
+      lat: null,
+      long: null,
+      weatherData: null,
       recipes: [],
       id: [],
     };
@@ -45,12 +45,16 @@ class App extends React.Component {
     // Call on the web browser API to get users location (default set to: Allow)
     await window.navigator.geolocation.getCurrentPosition(
       (response) => {
-        // The response is the set of latitude and longitude coordinates;
-        latitude = response.coords.latitude;
-        longitude = response.coords.longitude;
-        console.log(latitude, longitude);
+        // The response is the user coordinates including set of latitude and longitude coordinates;
+        const latitude = response.coords.latitude;
+        const longitude = response.coords.longitude;
+        // Save this latitude and longitude inside our state as this is relevant data to our program
+        this.setState({
+          lat: latitude,
+          long: longitude,
+        });
         // Use the Geocode.xyz API to reverse code my location
-        fetch(`https://geocode.xyz/${latitude},${longitude}?json=1`)
+        return fetch(`https://geocode.xyz/${latitude},${longitude}?json=1`)
           .then((response) => {
             return response.json();
           })
@@ -60,8 +64,26 @@ class App extends React.Component {
               location: locationData,
             });
             console.log(this.state.location);
+
+            // I want to chain my .then() method therefore I need to explicitly return the promise by using the return keyword
+            // Make the open weather API call here to get my weather data
+            return fetch(
+              `https://gentle-bayou-02230.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?lat=34.1651&lon=-84.7999&appid=723c2cacb52863c4cdaadea46e89044f`
+            );
+          })
+          .then((response) => {
+            return response.json();
+          })
+          .then((data) => {
+            console.log(data);
+            // The weather data will be passed through props to my Greeting component therefore I need to save it into state
+            this.setState({
+              weatherData: new Array(data),
+            });
           });
       },
+      // If the user deny the web browser API request for location this will produce this error.
+      // I need to write some logic to handle this error
       (error) => {
         const errorMsg = error.message;
         console.log(errorMsg);
@@ -69,25 +91,8 @@ class App extends React.Component {
     );
   };
 
-  // GETTING DATA FROM THE WEATHER API
-  // getWeather = async () => {
-  //   const response = await fetch(
-  //     `https://cryptic-headland-94862.herokuapp.com/api.openweathermap.org/data/2.5/weather?lat=34&lon=-84&appid=723c2cacb52863c4cdaadea46e89044f`,
-  //     {
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //         Accept: "application/json",
-  //       },
-  //     }
-  //   );
-
-  //   // const data = await response.json();
-  //   console.log(response);
-  // };
-
   // RETRIEVE LOCATION AS SOON AS THE APPLICATION LOADS
   componentDidMount() {
-    // this.getWeather();
     this.getPosition();
   }
 
@@ -131,6 +136,7 @@ class App extends React.Component {
             city={this.state.location.city}
             state={this.state.location.state}
             greet={this.timeOfDay()} // Call the timeOfDay() function directly as a props here
+            weather={this.state.weatherData}
           />
           <Switch>
             <Route

@@ -8,6 +8,15 @@
   padding-right: 20px;
 }
 
+.greetings h4 {
+  align-self: flex-end;
+  padding-top: 30px;
+}
+
+.greetings p {
+  margin-top: -30px;
+}
+
 /* LOADER SPINNER */
 .ui.segment {
   padding-top: 70px;
