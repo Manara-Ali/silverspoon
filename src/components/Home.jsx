@@ -9,10 +9,6 @@ import React from "react";
 const Home = () => {
   return (
     <div>
-      <div className="greetings">
-        <h4>Good Afternoon, Manara!</h4>
-        <p>Cartersville, GA</p>
-      </div>
       <div className="main">
         <div className="stacked">
           <div className="current-ingredients">

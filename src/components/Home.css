@@ -1,13 +1,3 @@
-/* GREETINGS */
-.greetings {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 15px;
-  padding-left: 20px;
-  padding-right: 20px;
-}
-
 /* WHAT'S IN YOUR FRIDGE */
 .stacked {
   display: flex;
