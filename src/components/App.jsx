@@ -6,6 +6,7 @@ import NavBar from "./NavBar";
 import Greetings from "./Greetings";
 import Home from "./Home";
 import FridgeItems from "./FridgeItems";
+import FoodMood from "./FoodMood";
 import Recipes from "./Recipes";
 import Footer from "./Footer";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -26,6 +27,7 @@ class App extends React.Component {
       weatherData: null, // weatherDate is created by API thru the openweather API. When the application loads, the call hasn't been sent yet, therefore no weather information is available
       recipes: [], // Recipes created by user inputs. When the application loads, there is no user input so recipes = []
       id: [],
+      foodMoodData: [],
     };
   }
 
@@ -129,6 +131,24 @@ class App extends React.Component {
   //     console.log(data);
   //   };
 
+  // WRITE A CALL BACK FUNCTION TO HANDLE FOOD MOOD REQUEST FROM USERS
+  onFoodMoodSubmit = async (userFoodMood) => {
+    console.log(userFoodMood);
+    // I turned this function into an asynchronous function because I will be making API call to my second endpoint here
+    const response = await fetch(
+      `https://api.spoonacular.com/recipes/complexSearch?apiKey=4553ea25c09b431a97981f54f6f7f33c&query=${userFoodMood}&number=1`
+    );
+    console.log(response);
+    const data = await response.json();
+    console.log(data);
+    this.setState({
+      foodMoodData: data.results.map((element) => {
+        return element;
+      }),
+    });
+    console.log(this.state.foodMoodData);
+  };
+
   render() {
     return (
       <Router>
@@ -163,6 +183,22 @@ class App extends React.Component {
                       // Pass the recipes variable that is inside the state and containing the list of potential recipes suggested to our user and the recipe IDs as props to the Recipes component
                       recipes={this.state.recipes}
                       instructions={this.state.id}
+                    />
+                  </div>
+                );
+              }}
+            />
+            <Route
+              path="/foodmood"
+              render={() => {
+                return (
+                  <div>
+                    {/* Use the call back function defined on line 100 to receive a notification each time the user submits a search and pass it through props to the FoodMood component */}
+                    <FoodMood onSubmit={this.onFoodMoodSubmit} />
+                    <Recipes
+                      // Pass the recipes variable that is inside the state and containing the list of potential recipes suggested to our user and the recipe IDs as props to the Recipes component
+                      foodMood={this.state.foodMoodData}
+                      // instructions={this.state.id}
                     />
                   </div>
                 );
