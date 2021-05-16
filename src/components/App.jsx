@@ -7,6 +7,7 @@ import Greetings from "./Greetings";
 import Home from "./Home";
 import FridgeItems from "./FridgeItems";
 import Recipes from "./Recipes";
+import Footer from "./Footer";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 // STEP 2. ADDITIONAL IMPORTS GO HERE
@@ -22,8 +23,8 @@ class App extends React.Component {
       location: [],
       lat: null,
       long: null,
-      weatherData: null,
-      recipes: [],
+      weatherData: null, // weatherDate is created by API thru the openweather API. When the application loads, the call hasn't been sent yet, therefore no weather information is available
+      recipes: [], // Recipes created by user inputs. When the application loads, there is no user input so recipes = []
       id: [],
     };
   }
@@ -63,7 +64,7 @@ class App extends React.Component {
             this.setState({
               location: locationData,
             });
-            console.log(this.state.location);
+            // console.log(this.state.location);
 
             // I want to chain my .then() method therefore I need to explicitly return the promise by using the return keyword
             // Make the open weather API call here to get my weather data
@@ -75,7 +76,7 @@ class App extends React.Component {
             return response.json();
           })
           .then((data) => {
-            console.log(data);
+            // console.log(data);
             // The weather data will be passed through props to my Greeting component therefore I need to save it into state
             this.setState({
               weatherData: new Array(data),
@@ -98,21 +99,22 @@ class App extends React.Component {
 
   //   CREATE A CALL BACK THAT WILL NOTIFY ME EACH TIME THE FORM IS SUBMITTED
   onFormSubmit = async (...searchInput) => {
+    // Here we are using JS Rest Pattern
     // NOW THAT IS HAVE THE USER SEACH ITEM, GO AHEAD AND DO YOUR API CALL HERE
 
     const response = await fetch(
       `https://api.spoonacular.com/recipes/findByIngredients?apiKey=4553ea25c09b431a97981f54f6f7f33c&ingredients=${searchInput}&number=2`
-    );
+    ); // We are calling on the food API to get data on the searched ingredients
     const data = await response.json();
     console.log(data);
     console.log(searchInput);
-    // number of recipes
+    // The number of returned recipes is then updated to the initial state we add on line 26.
     this.setState({
       recipes: data,
 
       //   I need to find a way to retrieve recipes IDs in order to get the instructions
       id: data.map((element) => {
-        return element.id;
+        return element.id; // Those dishes ID is also collected and updated in state
       }),
     });
     console.log(this.state.id);
@@ -132,12 +134,6 @@ class App extends React.Component {
       <Router>
         <div className="wrapper">
           <NavBar />
-          {/* <Greetings
-            city={this.state.location.city}
-            state={this.state.location.state}
-            greet={this.timeOfDay()} // Call the timeOfDay() function directly as a props here
-            weather={this.state.weatherData}
-          /> */}
           <Switch>
             <Route
               exact
@@ -147,10 +143,10 @@ class App extends React.Component {
                   <Home>
                     {/* I passed the Greeting component as a props to the Home component because I was the Greeting component to only show inside the home component otherwise, every time I change pages the position and Loading will repeat */}
                     <Greetings
-                      city={this.state.location.city}
-                      state={this.state.location.state}
+                      city={this.state.location.city} // Pass the users city through props to the Greetings component
+                      state={this.state.location.state} // Pass the users state through props to the Greetings component
                       greet={this.timeOfDay()} // Call the timeOfDay() function directly as a props here
-                      weather={this.state.weatherData}
+                      weather={this.state.weatherData} // Pass the users current weather information through props to the Greetings component
                     />
                   </Home>
                 );
@@ -161,8 +157,10 @@ class App extends React.Component {
               render={() => {
                 return (
                   <div>
+                    {/* Use the call back function defined on line 100 to receive a notification each time the user submits a search and pass it through props to the FridgeItems component */}
                     <FridgeItems onSubmit={this.onFormSubmit} />
                     <Recipes
+                      // Pass the recipes variable that is inside the state and containing the list of potential recipes suggested to our user and the recipe IDs as props to the Recipes component
                       recipes={this.state.recipes}
                       instructions={this.state.id}
                     />
@@ -171,6 +169,7 @@ class App extends React.Component {
               }}
             />
           </Switch>
+          <Footer />
         </div>
       </Router>
     );

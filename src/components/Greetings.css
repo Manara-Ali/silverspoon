@@ -18,7 +18,7 @@
 }
 
 /* LOADER SPINNER */
-.ui.segment {
+.ui.segment.spinner {
   padding-top: 70px;
   background-color: #d8456b;
 }

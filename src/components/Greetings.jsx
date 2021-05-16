@@ -7,8 +7,8 @@ import React from "react";
 
 // STEP 3. CREATE FUNCTION BASED COMPONENT
 const Greetings = (props) => {
-  console.log(props); // Verify what type of data I get here before consumming props
-  console.log(props.weather); // Verify what type of data I get here before consumming props
+  // console.log(props); // Verify what type of data I get here before consumming props
+  // console.log(props.weather); // Verify what type of data I get here before consumming props
   if (props.city && props.state && props.weather) {
     // Unless all props are available, continue showing the Loading spinner
     const tempFarenheit = Math.floor(
@@ -33,7 +33,7 @@ const Greetings = (props) => {
   } else {
     return (
       <div>
-        <div className="ui segment">
+        <div className="ui segment spinner">
           <div className="ui active inverted dimmer">
             <div className="ui text loader">Loading your location...</div>
             {/* REMEMBER TO DEAL WITH THE CASE WHERE USER BLOCK THERE LOCATION BEFORE SUBMITTING THE PROJECT */}
