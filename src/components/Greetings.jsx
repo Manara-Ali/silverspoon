@@ -20,7 +20,7 @@ const Greetings = (props) => {
         <h4>{props.greet}, Manara!</h4>
         <p>
           {props.city}, {props.state} {props.weather.base}
-          <span>
+          <span className="locator">
             <img
               src={`http://openweathermap.org/img/w/${props.weather[0].weather[0].icon}.png`}
               alt="weather icon"

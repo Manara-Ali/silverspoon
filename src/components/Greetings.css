@@ -8,13 +8,19 @@
   padding-right: 20px;
 }
 
+.locator {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
 .greetings h4 {
-  align-self: flex-end;
-  padding-top: 30px;
+  align-self: center;
 }
 
 .greetings p {
-  margin-top: -30px;
+  align-self: center;
 }
 
 /* LOADER SPINNER */
