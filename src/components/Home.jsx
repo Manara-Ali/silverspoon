@@ -6,9 +6,10 @@ import React from "react";
 // STEP 2. ADDITIONAL IMPORTS GO HERE
 
 // STEP 3. CREATE COMPONENT
-const Home = () => {
+const Home = (props) => {
   return (
     <div>
+      {props.children}
       <div className="main">
         <div className="stacked">
           <div className="current-ingredients">

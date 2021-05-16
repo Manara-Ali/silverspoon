@@ -132,18 +132,28 @@ class App extends React.Component {
       <Router>
         <div className="wrapper">
           <NavBar />
-          <Greetings
+          {/* <Greetings
             city={this.state.location.city}
             state={this.state.location.state}
             greet={this.timeOfDay()} // Call the timeOfDay() function directly as a props here
             weather={this.state.weatherData}
-          />
+          /> */}
           <Switch>
             <Route
               exact
               path="/"
               render={() => {
-                return <Home />;
+                return (
+                  <Home>
+                    {/* I passed the Greeting component as a props to the Home component because I was the Greeting component to only show inside the home component otherwise, every time I change pages the position and Loading will repeat */}
+                    <Greetings
+                      city={this.state.location.city}
+                      state={this.state.location.state}
+                      greet={this.timeOfDay()} // Call the timeOfDay() function directly as a props here
+                      weather={this.state.weatherData}
+                    />
+                  </Home>
+                );
               }}
             />
             <Route
