@@ -135,54 +135,54 @@ class App extends React.Component {
 
   // WRITE A CALL BACK FUNCTION TO HANDLE FOOD MOOD REQUEST FROM USERS
   onFoodMoodSubmit = async (userFoodMood) => {
-    console.log(userFoodMood);
+    // console.log(userFoodMood); // Verify that user request was carried over to App.jsx
     // I turned this function into an asynchronous function because I will be making API call to my second endpoint here
     const response = await fetch(
       `https://api.spoonacular.com/recipes/complexSearch?apiKey=4553ea25c09b431a97981f54f6f7f33c&query=${userFoodMood}&number=1`
     );
-    console.log(response); // Verify that we get a response from the API
+    // console.log(response); // Verify that we get a response from the API
     const data = await response.json();
-    console.log(data); // Verify that data is returned from the API
+    // console.log(data); // Verify that data is returned from the API
     // I want to store the Food Mood of our user, therefore I save it into state
     this.setState({
       foodMoodData: data.results.map((element) => {
         return element;
       }),
     });
-    console.log(this.state.foodMoodData); // Verify that user Food Mood was in fact store into state
+    // console.log(this.state.foodMoodData); // Verify that user Food Mood was in fact store into state
     // Because the endpoint returning cooking directions needs the dish id, I went ahead and saved user Food Mood id into state
     this.setState({
       foodMoodDataId: this.state.foodMoodData.map((element) => {
         return element.id;
       }),
     });
-    console.log(this.state.foodMoodDataId); // Verify that the Food Mood id was properly stored into state
+    // console.log(this.state.foodMoodDataId); // Verify that the Food Mood id was properly stored into state
 
+    // I tried using the Lifecycle method here but it kept re-rendering my application until it crashed
+    // Instead, I will call the cooking directions function as soon as the form is submitted
+    // ADVANTAGE: The call is made only once and done so the component gets updated and rendered only once!!
     this.cookingDirections();
   };
 
-  // I NEED TO USE USER FOOD MOOD ID TO MAKE A CALL TO OUR API FOR COOKING DIRECTIONS
+  // I NEED TO USE USER'S FOOD MOOD ID TO MAKE A CALL TO OUR API FOR COOKING DIRECTIONS
   cookingDirections = async () => {
-    console.log(this.state.foodMoodDataId);
+    // console.log(this.state.foodMoodDataId); // Verify that I have access to the user food Id
     if (this.state.foodMoodDataId.length) {
+      // Use the if statement logic to prevent React from lauching an API request until the user entered there Food Mood and the Id for that particular Food Mood is returned
       const response = await fetch(
         `https://api.spoonacular.com/recipes/${this.state.foodMoodDataId[0]}/analyzedInstructions?apiKey=4553ea25c09b431a97981f54f6f7f33c`
       );
       const data = await response.json();
       console.log(data);
       this.setState({
-        foodMoodDirections: data[0].steps,
+        foodMoodDirections: data[0].steps, //Store the cooking directions for the user dish into our state for later use
       });
     }
     // this.setState({
     //   foodMoodDirections: ''
     // });
-    console.log(this.state.foodMoodDirections);
+    // console.log(this.state.foodMoodDirections);  // Verify that the Food Mood directions were properly stored
   };
-
-  // componentDidUpdate() {
-  //   this.cookingDirections();
-  // }
 
   render() {
     return (
@@ -236,8 +236,8 @@ class App extends React.Component {
                       // instructions={this.state.id}
                     />
                     <Directions
-                      onSubmit={this.onFoodMoodSubmit}
-                      directions={this.state.foodMoodDirections}
+                      onSubmit={this.onFoodMoodSubmit} // Here I attach my Food Mood call back function to the Directions component so I can pass it as props to notify me every time the use makes a Food Mood request
+                      directions={this.state.foodMoodDirections} // Send all the cooking directions to the Directions Component and use it as props
                     />
                   </div>
                 );

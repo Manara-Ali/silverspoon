@@ -38,7 +38,7 @@ class FoodMood extends React.Component {
         style={{ marginTop: "20px", marginLeft: "30px", marginRight: "30px" }}
       >
         <div className="ui segment">
-          <h2 style={{ textAlign: "center" }}>Food Mood</h2>
+          <h2 style={{ textAlign: "center", color: "#d8456b" }}>Food Mood</h2>
           <form className="ui form" onSubmit={this.handleFormSubmission}>
             {" "}
             <div className="field">

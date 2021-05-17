@@ -39,7 +39,9 @@ class FridgeItems extends React.Component {
         style={{ marginTop: "20px", marginLeft: "30px", marginRight: "30px" }}
       >
         <div className="ui segment">
-          <h2 style={{ textAlign: "center" }}>Fridge Items</h2>
+          <h2 style={{ textAlign: "center", color: "#d8456b" }}>
+            Fridge Items
+          </h2>
           <form className="ui form" onSubmit={this.handleFormSubmission}>
             <div className="field">
               <label style={{ fontSize: "1.25em" }}>
