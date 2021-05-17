@@ -9,6 +9,7 @@ import FridgeItems from "./FridgeItems";
 import FoodMood from "./FoodMood";
 import Recipes from "./Recipes";
 import Directions from "./Directions";
+import Instructions from "./Instructions";
 import Footer from "./Footer";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
@@ -239,6 +240,16 @@ class App extends React.Component {
                       onSubmit={this.onFoodMoodSubmit} // Here I attach my Food Mood call back function to the Directions component so I can pass it as props to notify me every time the use makes a Food Mood request
                       directions={this.state.foodMoodDirections} // Send all the cooking directions to the Directions Component and use it as props
                     />
+                  </div>
+                );
+              }}
+            />
+            <Route
+              path="/cooking-instructions"
+              render={() => {
+                return (
+                  <div>
+                    <Instructions />
                   </div>
                 );
               }}
