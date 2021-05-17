@@ -8,13 +8,13 @@ import Home from "./Home";
 import FridgeItems from "./FridgeItems";
 import FoodMood from "./FoodMood";
 import Recipes from "./Recipes";
+import Directions from "./Directions";
 import Footer from "./Footer";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 // STEP 2. ADDITIONAL IMPORTS GO HERE
 
 // STEP 3. CREATE CLASS BASED COMPONENT
-
 class App extends React.Component {
   // CREATE A STATE TO KEEP TRACK OF THE API DATA
   constructor(props) {
@@ -28,6 +28,8 @@ class App extends React.Component {
       recipes: [], // Recipes created by user inputs. When the application loads, there is no user input so recipes = []
       id: [],
       foodMoodData: [],
+      foodMoodDataId: [],
+      foodMoodDirections: [],
     };
   }
 
@@ -123,13 +125,13 @@ class App extends React.Component {
   };
 
   //   //   CREATE A FUNCTION CALL TO THE API TO GET COOKING INSTRUCTIONS
-  //   recipeInstructions = async (recipeId) => {
-  //     const response = await fetch(
-  //       `https://api.spoonacular.com/recipes/${recipeId}/analyzedInstructions?apiKey=4553ea25c09b431a97981f54f6f7f33c`
-  //     );
-  //     const data = await response.json();
-  //     console.log(data);
-  //   };
+  // recipeInstructions = async (recipeId) => {
+  //   const response = await fetch(
+  //     `https://api.spoonacular.com/recipes/${recipeId}/analyzedInstructions?apiKey=4553ea25c09b431a97981f54f6f7f33c`
+  //   );
+  //   const data = await response.json();
+  //   console.log(data);
+  // };
 
   // WRITE A CALL BACK FUNCTION TO HANDLE FOOD MOOD REQUEST FROM USERS
   onFoodMoodSubmit = async (userFoodMood) => {
@@ -138,16 +140,49 @@ class App extends React.Component {
     const response = await fetch(
       `https://api.spoonacular.com/recipes/complexSearch?apiKey=4553ea25c09b431a97981f54f6f7f33c&query=${userFoodMood}&number=1`
     );
-    console.log(response);
+    console.log(response); // Verify that we get a response from the API
     const data = await response.json();
-    console.log(data);
+    console.log(data); // Verify that data is returned from the API
+    // I want to store the Food Mood of our user, therefore I save it into state
     this.setState({
       foodMoodData: data.results.map((element) => {
         return element;
       }),
     });
-    console.log(this.state.foodMoodData);
+    console.log(this.state.foodMoodData); // Verify that user Food Mood was in fact store into state
+    // Because the endpoint returning cooking directions needs the dish id, I went ahead and saved user Food Mood id into state
+    this.setState({
+      foodMoodDataId: this.state.foodMoodData.map((element) => {
+        return element.id;
+      }),
+    });
+    console.log(this.state.foodMoodDataId); // Verify that the Food Mood id was properly stored into state
+
+    this.cookingDirections();
   };
+
+  // I NEED TO USE USER FOOD MOOD ID TO MAKE A CALL TO OUR API FOR COOKING DIRECTIONS
+  cookingDirections = async () => {
+    console.log(this.state.foodMoodDataId);
+    if (this.state.foodMoodDataId.length) {
+      const response = await fetch(
+        `https://api.spoonacular.com/recipes/${this.state.foodMoodDataId[0]}/analyzedInstructions?apiKey=4553ea25c09b431a97981f54f6f7f33c`
+      );
+      const data = await response.json();
+      console.log(data);
+      this.setState({
+        foodMoodDirections: data[0].steps,
+      });
+    }
+    // this.setState({
+    //   foodMoodDirections: ''
+    // });
+    console.log(this.state.foodMoodDirections);
+  };
+
+  // componentDidUpdate() {
+  //   this.cookingDirections();
+  // }
 
   render() {
     return (
@@ -199,6 +234,10 @@ class App extends React.Component {
                       // Pass the recipes variable that is inside the state and containing the list of potential recipes suggested to our user and the recipe IDs as props to the Recipes component
                       foodMood={this.state.foodMoodData}
                       // instructions={this.state.id}
+                    />
+                    <Directions
+                      onSubmit={this.onFoodMoodSubmit}
+                      directions={this.state.foodMoodDirections}
                     />
                   </div>
                 );
