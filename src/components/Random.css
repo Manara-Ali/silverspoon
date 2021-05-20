@@ -1,0 +1,32 @@
+.container-flex {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.container-flex .no-bullet-points {
+  list-style: none;
+}
+
+.ingredients {
+  width: 80%;
+  margin: auto;
+  margin-top: 10px;
+  line-height: 2em;
+}
+
+.random-instructions {
+  display: block;
+  text-align: center;
+  width: 80%;
+  margin: auto;
+  margin-top: 50px;
+  line-height: 2em;
+}
+
+.card.foodmood .random-img {
+  width: 50em;
+  padding-left: 5%;
+  margin-left: -70px;
+}

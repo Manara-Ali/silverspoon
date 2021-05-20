@@ -117,7 +117,7 @@ const Home = (props) => {
             </div>
             <div className="suggestions-text">
               <h2>
-                <a href="/randomrecipes">Random Recipes</a>
+                <a href="/random-recipes">Random Recipes</a>
               </h2>
               <p>
                 At <em>Silver Spoon</em>, we dont take ourselves too seriously

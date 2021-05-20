@@ -10,6 +10,7 @@ import FoodMood from "./FoodMood";
 import Recipes from "./Recipes";
 import Directions from "./Directions";
 import Instructions from "./Instructions";
+import Random from "./Random";
 import Footer from "./Footer";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
@@ -250,6 +251,17 @@ class App extends React.Component {
                 return (
                   <div>
                     <Instructions />
+                  </div>
+                );
+              }}
+            />
+            <Route
+              exact
+              path="/random-recipes"
+              render={() => {
+                return (
+                  <div>
+                    <Random />
                   </div>
                 );
               }}
