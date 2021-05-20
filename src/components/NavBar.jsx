@@ -9,8 +9,14 @@ import React from "react";
 const NavBar = () => {
   return (
     <div className="navbar">
-      <h1>
-        <a href="/">Silver/Spoon</a>
+      <h1 style={{ paddingLeft: "50px", marginBottom: "-20px" }}>
+        <a href="/">
+          <img
+            src="/images/silver-spoon-logo.png"
+            alt=""
+            style={{ width: "40%", height: "40%" }}
+          />
+        </a>
       </h1>
       <ul>
         <li>
