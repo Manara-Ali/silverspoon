@@ -7,8 +7,8 @@ import React from "react";
 
 // STEP 3. CREATE FUNCTION BASED COMPONENT
 const Recipes = (props) => {
-  console.log(props.recipes); // Get confirmation that props were correctly passed to the child component
-  console.log(props.foodMood);
+  // console.log(props.recipes); // Get confirmation that props were correctly passed to the child component
+  // console.log(props.foodMood);
   if (props.recipes) {
     const propsRecipe = props.recipes.map((element) => {
       // Create a new array that will store all the data that we need from the recipes props

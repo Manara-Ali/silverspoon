@@ -21,6 +21,7 @@ class FridgeItems extends React.Component {
 
   //   I need a function to handle my form submission
   handleFormSubmission = (e) => {
+    console.log("I am coming from fridgeitems");
     // Prevent the form from reloading upon submission
     e.preventDefault();
 

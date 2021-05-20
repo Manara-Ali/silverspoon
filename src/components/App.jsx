@@ -69,7 +69,6 @@ class App extends React.Component {
             this.setState({
               location: locationData,
             });
-            // console.log(this.state.location);
 
             // I want to chain my .then() method therefore I need to explicitly return the promise by using the return keyword
             // Make the open weather API call here to get my weather data
@@ -81,7 +80,6 @@ class App extends React.Component {
             return response.json();
           })
           .then((data) => {
-            // console.log(data);
             // The weather data will be passed through props to my Greeting component therefore I need to save it into state
             this.setState({
               weatherData: new Array(data),
@@ -111,8 +109,8 @@ class App extends React.Component {
       `https://api.spoonacular.com/recipes/findByIngredients?apiKey=4553ea25c09b431a97981f54f6f7f33c&ingredients=${searchInput}&number=2`
     ); // We are calling on the food API to get data on the searched ingredients
     const data = await response.json();
-    console.log(data);
-    console.log(searchInput);
+    // console.log(data);
+    // console.log(searchInput);
     // The number of returned recipes is then updated to the initial state we add on line 26.
     this.setState({
       recipes: data,
@@ -122,7 +120,7 @@ class App extends React.Component {
         return element.id; // Those dishes ID is also collected and updated in state
       }),
     });
-    console.log(this.state.id);
+    // console.log(this.state.id);
   };
 
   //   //   CREATE A FUNCTION CALL TO THE API TO GET COOKING INSTRUCTIONS
@@ -136,6 +134,7 @@ class App extends React.Component {
 
   // WRITE A CALL BACK FUNCTION TO HANDLE FOOD MOOD REQUEST FROM USERS
   onFoodMoodSubmit = async (userFoodMood) => {
+    // console.log("I am coming from onFoodSubmit");
     // console.log(userFoodMood); // Verify that user request was carried over to App.jsx
     // I turned this function into an asynchronous function because I will be making API call to my second endpoint here
     const response = await fetch(
@@ -167,6 +166,7 @@ class App extends React.Component {
 
   // I NEED TO USE USER'S FOOD MOOD ID TO MAKE A CALL TO OUR API FOR COOKING DIRECTIONS
   cookingDirections = async () => {
+    // console.log("I am coming from cooking directions");
     // console.log(this.state.foodMoodDataId); // Verify that I have access to the user food Id
     if (this.state.foodMoodDataId.length) {
       // Use the if statement logic to prevent React from lauching an API request until the user entered there Food Mood and the Id for that particular Food Mood is returned
@@ -174,7 +174,7 @@ class App extends React.Component {
         `https://api.spoonacular.com/recipes/${this.state.foodMoodDataId[0]}/analyzedInstructions?apiKey=4553ea25c09b431a97981f54f6f7f33c`
       );
       const data = await response.json();
-      console.log(data);
+      // console.log(data);
       this.setState({
         foodMoodDirections: data[0].steps, //Store the cooking directions for the user dish into our state for later use
       });

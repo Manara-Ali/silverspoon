@@ -10,6 +10,7 @@ const Directions = (props) => {
   //   console.log(props.onSubmit); // Verify that the props were properly passed
   //   console.log(props.directions);  // Verify that directions props were properly passed
   if (props.directions.length) {
+    // console.log("I am coming from direction jsx");
     //   Use a if statement here again to keep React from throwing an error because when the application starts and until the user submits a Food Mood request props.directions is undefined and attempting to loop through undefined using the map() method will cause React to throw an error
     const directionList = props.directions.map((element) => {
       return element.step;
