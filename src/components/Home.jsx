@@ -78,7 +78,7 @@ const Home = (props) => {
           <div className="instructions">
             <div className="instructions-text">
               <h2>
-                <a href="/cooking-instructions">Get Instructions</a>
+                <a href="/cooking-instructions">Get Cooking Instructions</a>
               </h2>
               <p>
                 Some people say cooking is an art, we at <em>Silver Spoon</em>{" "}
