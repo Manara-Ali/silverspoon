@@ -1,4 +1,4 @@
-import "./Random.css";
+// import "./Random.css";
 
 // STEP 1. IMPORT REACT
 import React, { useState, useEffect } from "react";
@@ -70,37 +70,31 @@ const Random = () => {
 
   return (
     <div className="container-flex">
-      <div className="card foodmood">
-        <h4 style={{ color: "#d8456b" }}>{title}</h4>
+      <div className="card-container">
+        <h4>{title}</h4>
         <div>
-          <h5 style={{ color: "#529471", paddingBottom: "10px" }}>
-            Preparation Time:{" "}
-            <span style={{ color: "#35635b" }}>{cookingTime} Minutes</span>
+          <h5>
+            Preparation Time: <span>{cookingTime} Minutes</span>
           </h5>
         </div>
         <div>
-          <h5 style={{ color: "#529471", paddingBottom: "10px" }}>
-            Servings:{" "}
-            <span style={{ color: "#35635b" }}>{servings} People</span>
+          <h5>
+            Servings: <span>{servings} People</span>
           </h5>
         </div>
-        <div>
-          <img src={image} alt="" className="random-img" />
+        <div className="random-img">
+          <img src={image} alt="" />
         </div>
       </div>
-      <hr style={{ marginTop: "70px" }} />
+      <hr style={{ marginTop: "5%" }} />
       <div>
         <div className="ingredients">
-          <h4 style={{ color: "#d8456b" }}>
-            Ingredients ({ingredientList.length})
-          </h4>
+          <h4>Ingredients ({ingredientList.length})</h4>
           {ingredientList}
         </div>
-        <hr style={{ marginTop: "50px" }} />
+        <hr style={{ marginTop: "5%" }} />
         <div className="random-instructions">
-          <h4 style={{ color: "#d8456b" }}>
-            Directions ({instructionsList.length})
-          </h4>
+          <h4>Directions ({instructionsList.length})</h4>
           {instructionsList}
         </div>
       </div>

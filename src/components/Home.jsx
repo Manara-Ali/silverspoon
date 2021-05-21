@@ -1,4 +1,4 @@
-import "./Home.css";
+// import "./Home.css";
 
 // STEP 1. IMPORT REACT
 import React from "react";
@@ -35,21 +35,13 @@ const Home = (props) => {
               </p>
             </div>
             <div className="current-ingredients-image">
-              <img
-                src="./images/opened-fridge.jpg"
-                alt="fridge"
-                style={{ width: "400px", height: "100%" }}
-              />
+              <img src="./images/opened-fridge.jpg" alt="fridge" />
             </div>
           </div>
 
           <div className="current-mood">
             <div className="current-mood-image">
-              <img
-                src="/images/foodmood.jpg"
-                alt="fridge"
-                style={{ width: "400px", height: "100%" }}
-              />
+              <img src="/images/foodmood.jpg" alt="fridge" />
             </div>
             <div className="current-mood-text">
               <h2>
@@ -100,20 +92,12 @@ const Home = (props) => {
               </p>
             </div>
             <div className="instructions-image">
-              <img
-                src="./images/cookbook.jpg"
-                alt="fridge"
-                style={{ width: "400px", height: "100%" }}
-              />
+              <img src="./images/cookbook.jpg" alt="fridge" />
             </div>
           </div>
           <div className="suggestions">
             <div className="suggestions-image">
-              <img
-                src="./images/random.jpg"
-                alt="fridge"
-                style={{ width: "400px", height: "100%" }}
-              />
+              <img src="./images/random.jpg" alt="fridge" />
             </div>
             <div className="suggestions-text">
               <h2>

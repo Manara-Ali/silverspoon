@@ -1,4 +1,4 @@
-import "./NavBar.css";
+// import "./NavBar.css";
 
 // STEP 1. IMPORT REACT
 import React from "react";
@@ -9,13 +9,9 @@ import React from "react";
 const NavBar = () => {
   return (
     <div className="navbar">
-      <h1 style={{ paddingLeft: "50px", marginBottom: "-20px" }}>
+      <h1>
         <a href="/">
-          <img
-            src="/images/silver-spoon-logo.png"
-            alt=""
-            style={{ width: "40%", height: "40%" }}
-          />
+          <img src="/images/silver-spoon-logo.png" alt="" />
         </a>
       </h1>
       <ul>

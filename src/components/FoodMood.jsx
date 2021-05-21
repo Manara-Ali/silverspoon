@@ -33,12 +33,9 @@ class FoodMood extends React.Component {
   };
   render() {
     return (
-      <div
-        className="container"
-        style={{ marginTop: "20px", marginLeft: "30px", marginRight: "30px" }}
-      >
+      <div className="container">
         <div className="ui segment">
-          <h2 style={{ textAlign: "center", color: "#d8456b" }}>Food Mood</h2>
+          <h2>Food Mood</h2>
           <form className="ui form" onSubmit={this.handleFormSubmission}>
             {" "}
             <div className="field">
@@ -51,19 +48,11 @@ class FoodMood extends React.Component {
                 value={this.state.usersFavoriteFood}
               />
             </div>
-            <button
-              className="ui inverted green button"
-              type="submit"
-              // style={{ color: "#7dbf27" }}
-            >
+            <button className="ui inverted green button" type="submit">
               Picture My Mood
             </button>
           </form>
         </div>
-        {/* <div className="card">
-          <h4>Recipes</h4>
-          <p></p>
-        </div> */}
       </div>
     );
   }

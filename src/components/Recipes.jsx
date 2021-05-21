@@ -1,4 +1,4 @@
-import "./Recipes.css";
+// import "./Recipes.css";
 
 // STEP 1. IMPORT REACT
 import React from "react";
@@ -25,11 +25,14 @@ const Recipes = (props) => {
             necessary ingredients to make:
           </p>
           <div className="card">
-            <h4 style={{ color: "#d8456b" }}>{element.title}</h4>
+            <h4>{element.title}</h4>
             <img src={element.image} alt="recipe" />
           </div>
           <div className="missing">
-            <h5>Missing Ingredients: ({element.missedIngredientCount})</h5>
+            <h5>
+              Missing Ingredients:{" "}
+              <span>({element.missedIngredientCount})</span>
+            </h5>
             <ul>
               {element.missedIngredients.map((dish) => {
                 return <li key={dish.id}>{dish.name.toUpperCase()}</li>;
@@ -42,7 +45,7 @@ const Recipes = (props) => {
     }); // Store in the propsRecipe array, to here line 41.
     return (
       // Return all the stored data inside the propsRecipe as a JS variable
-      <div>{propsRecipe}</div>
+      <div className="reciper-render-div">{propsRecipe}</div>
     );
   }
   // const propsRecipe = props.recipes.map((element) => {

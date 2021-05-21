@@ -1,4 +1,4 @@
-import "./Greetings.css";
+// import "./Greetings.css";
 
 // STEP 1. IMPORT REACT
 import React from "react";

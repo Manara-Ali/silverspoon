@@ -1,4 +1,4 @@
-import "./Directions.css";
+// import "./Directions.css";
 
 // STEP 1. IMPORT REACT
 import React from "react";
@@ -18,9 +18,7 @@ const Directions = (props) => {
     return (
       <div className="directions">
         <hr />
-        <h3 style={{ textAlign: "center", color: "#d8456b" }}>
-          Cooking Directions ({directionList.length})
-        </h3>
+        <h3>Cooking Directions ({directionList.length})</h3>
         <ol>
           {directionList.map((element) => {
             return <li>{element}</li>;

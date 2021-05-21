@@ -119,51 +119,25 @@ const Instructions = () => {
     return (
       <div className="directions">
         {/* <hr /> */}
-        <h3
-          style={{
-            textAlign: "center",
-            color: "#d8456b",
-            marginBottom: "50px",
-          }}
-        >
-          Cooking Directions ({listOfInstructions.length})
-        </h3>
+        <h3>Cooking Directions ({listOfInstructions.length})</h3>
         <ol>
           {listOfInstructions.map((element) => {
             return <li key={`${Math.random()}`}>{element.step}</li>;
           })}
         </ol>
         <hr />
-        <div className="card" style={{ marginTop: "100px", width: "800px" }}>
-          <h4
-            style={{
-              color: "#d8456b",
-              paddingTop: "30px",
-              paddingBottom: "10px",
-              textAlign: "center",
-            }}
-          >
-            {listOfImages[0].title}
-          </h4>
-          <img
-            src={listOfImages[0].image}
-            alt="recipe"
-            style={{ width: "50em", paddingLeft: "5%", paddingBottom: "40px" }}
-          />
+        <div className="card">
+          <h4>{listOfImages[0].title}</h4>
+          <img src={listOfImages[0].image} alt="recipe" />
         </div>
-        <hr style={{ marginTop: "100px" }} />
+        <hr style={{ marginTop: "10%" }} />
       </div>
     );
   } else {
     return (
-      <div
-        className="container"
-        style={{ marginTop: "20px", marginLeft: "30px", marginRight: "30px" }}
-      >
+      <div className="container">
         <div className="ui segment">
-          <h2 style={{ textAlign: "center", color: "#d8456b" }}>
-            Get Cooking Instructions
-          </h2>
+          <h2>Get Cooking Instructions</h2>
           <form className="ui form" onSubmit={handleFormSubmit}>
             {" "}
             <div className="field">

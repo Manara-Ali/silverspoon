@@ -12,3 +12,430 @@ body {
   letter-spacing: 0.15em;
   background-color: #f4f4f4;
 }
+
+/* NAVBAR */
+.navbar-wrapper {
+  background-color: #d8456b;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background-color: #d8456b;
+  margin-top: -5px;
+}
+
+.navbar > h1 {
+  padding-left: 50px;
+  margin-bottom: -20px;
+}
+
+.navbar > h1 > a {
+  color: #fff;
+  text-decoration: none;
+  padding-bottom: 2px;
+}
+
+.navbar a > img {
+  width: 40%;
+  height: 40%;
+}
+
+.navbar > ul {
+  display: flex;
+  align-items: center;
+  list-style: none;
+}
+
+.navbar > ul > li > a {
+  display: inline-block;
+  margin-right: 20px;
+  text-decoration: none;
+  color: #fff;
+  padding-bottom: 5px;
+}
+
+.navbar > ul > li > a:hover {
+  border-bottom: 2px solid #fff;
+}
+
+/* GREETINGS */
+.greetings {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 15px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.locator {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.greetings h4 {
+  align-self: center;
+  /* padding-left: 160px; */
+  padding-left: 12%;
+}
+
+.greetings p {
+  /* padding-right: 160px; */
+  padding-right: 8%;
+}
+
+.greetings p {
+  align-self: center;
+}
+
+/* LOADER SPINNER */
+.ui.segment.spinner {
+  padding-top: 70px;
+  background-color: #d8456b;
+}
+
+/* HOME */
+.stacked {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 100px;
+}
+
+.current-ingredients,
+.current-mood,
+.instructions,
+.suggestions {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.current-ingredients-text,
+.current-mood-text,
+.instructions-text,
+.suggestions-text {
+  width: 50%;
+  padding-left: 50px;
+  padding-right: 50px;
+  line-height: 2em;
+}
+
+.current-ingredients-text a,
+.current-mood-text a,
+.instructions-text a,
+.suggestions-text a {
+  color: #7dbf27;
+  text-decoration: none;
+}
+
+.current-ingredients-image,
+.current-mood-image,
+.instructions-image,
+.suggestions-image {
+  max-width: 50%;
+  margin-left: 50px;
+}
+
+.current-ingredients-image > img,
+.current-mood-image > img,
+.instructions-image > img,
+.suggestions-image > img {
+  border: 3px solid #7dbf27;
+  border-radius: 10px;
+  box-shadow: 10px 5px 5px 1px #ddd;
+  width: 400px;
+  height: 100%;
+}
+
+/* WHAT'S IN YOUR FRIDGE */
+.container {
+  /* margin-top: 20px; */
+  margin-top: 2%;
+  /* margin-left: 100px; */
+  margin-left: 8%;
+  margin-right: 8%;
+}
+
+.container h2 {
+  text-align: center;
+  color: #d8456b;
+}
+
+/* RECIPE */
+/* Card */
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.reciper-render-div {
+  padding-bottom: 100px;
+}
+
+.card {
+  border: 2px solid #7dbf27;
+  border-radius: 20px;
+  box-shadow: 10px 5px 5px 1px #ddd;
+  width: 70%;
+  height: fit-content;
+  margin: 30px auto 30px;
+  /* padding-top: 15px; */
+  padding-top: 3%;
+  padding-bottom: 3%;
+  /* padding-left: 3%; */
+}
+
+.card > h4 {
+  font-size: 1.75em;
+  color: #d8456b;
+  text-align: center;
+}
+
+.card img {
+  width: 50%;
+  display: block;
+  margin: auto;
+}
+
+.card > hr {
+  width: 50%;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+}
+
+.missing {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.missing h5 {
+  color: #35635b;
+}
+
+.missing span {
+  color: #35635b;
+}
+
+.missing ul {
+  list-style: none;
+}
+
+.container.manara > p {
+  font-size: 1.25em;
+  /* width: 400px; */
+  width: 50%;
+  margin: auto;
+  text-align: center;
+  /* padding-top: 100px; */
+  padding-top: 2%;
+}
+
+.used {
+  color: #5d9711;
+  font-weight: bold;
+}
+
+.need {
+  color: #d8456b;
+  font-weight: bold;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  margin: 2.5em 0;
+  position: relative;
+}
+hr:before,
+hr:after {
+  content: "";
+  position: absolute;
+  bottom: 0px;
+  height: 5em;
+  width: 100%;
+  background: radial-gradient(
+    ellipse at bottom,
+    rgba(255, 255, 255, 0.35) 0%,
+    rgba(255, 255, 255, 0) 70%
+  );
+  z-index: 0;
+}
+hr:after {
+  top: 0px;
+  bottom: auto;
+  height: 1.5em;
+  background: radial-gradient(
+    ellipse at top,
+    rgba(0, 0, 0, 0.06) 0%,
+    rgba(0, 0, 0, 0) 70%
+  );
+}
+
+/* FOOD MOOD STYLING */
+.container.foodmood {
+  margin-top: 5%;
+  /* background-color: red; */
+}
+
+.card.foodmood {
+  width: 70%;
+  height: 45em;
+  margin: auto;
+}
+
+.card.foodmood > h4 {
+  color: #d8456b;
+  text-align: center;
+}
+
+.card.foodmood > img {
+  display: block;
+  width: 50em;
+  margin: auto;
+  padding-right: 5%;
+  padding-left: 5%;
+}
+
+/* DIRECTIONS */
+.directions {
+  width: 800px;
+  margin: auto;
+  margin-top: 70px;
+  padding-bottom: 200px;
+}
+
+.directions h3 {
+  text-align: center;
+  color: #d8456b;
+}
+
+/* .directions img {
+  padding-left: 0;
+} */
+
+ol > li {
+  padding-bottom: 10px;
+  line-height: 1.5em;
+}
+
+/* INSTRUCTIONS */
+.directions h3 {
+  text-align: center;
+  color: #d8456b;
+  margin-bottom: 5%;
+}
+
+.directions .card {
+  margin-top: 100px;
+  /* width: 800px; */
+  width: 100%;
+}
+
+.directions .card h4 {
+  color: #d8456b;
+  /* padding-top: 10px; */
+  padding-top: 0.5%;
+  padding-bottom: 0.5%;
+  text-align: center;
+}
+
+.directions .card img {
+  width: 50em;
+  /* padding-bottom: 40px; */
+  padding-bottom: 3%;
+}
+
+/* RANDOM RECIPES */
+.container-flex {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  /* margin-top: 50px; */
+  margin-top: 5%;
+  /* padding-bottom: 200px; */
+  padding-bottom: 15%;
+}
+
+.container-flex .no-bullet-points {
+  list-style: none;
+}
+
+.card-container {
+  border: 2px solid #7dbf27;
+  width: 55%;
+  margin: auto;
+  border-radius: 20px;
+  box-shadow: 10px 5px 5px 1px #ddd;
+  margin: 30px auto 30px;
+  padding-top: 2%;
+}
+
+.card-container h4 {
+  font-size: 1.75em;
+  color: #d8456b;
+}
+
+.container-flex h5 {
+  color: #529471;
+  padding-bottom: 10px;
+  font-size: 1.2em;
+}
+
+.container-flex span {
+  color: #35635b;
+}
+
+.random-img {
+  padding-bottom: 10%;
+}
+
+.ingredients {
+  width: 55%;
+  margin: auto;
+  /* margin-top: 10px; */
+  margin-top: 1%;
+  line-height: 1.7em;
+}
+
+.ingredients h4 {
+  font-size: 1.65em;
+  color: #d8456b;
+}
+
+.ingredients li {
+  font-size: 1.1em;
+  line-height: 1.5em;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.random-instructions {
+  display: block;
+  text-align: center;
+  font-size: 1.1em;
+  line-height: 2em;
+  width: 55%;
+  margin: auto;
+  /* margin-top: 50px; */
+  margin-top: 5%;
+}
+
+.random-instructions h4 {
+  font-size: 1.65em;
+  color: #d8456b;
+}
+
+.random-instructions li {
+  text-align: left;
+  font-size: 1.1em;
+}
