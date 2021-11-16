@@ -5,6 +5,9 @@ https://silver-spoon-1.herokuapp.com/
 
 We have all be there. You want to try something new but are afraid you don't know exactly how you will cook it. Or you have never cooked before and want to learn or wish you learned sooner. Well, the best time to do anything was yesterday. The next best time is TODAY!
 
+## ReadME image
+![](images/silverSpoon.png)
+
 ## What's in your fridge?
 
 Silver Spoon is an application that let's you the user enter whatever you have available in your fridge and make a dish out of it. Silver Spoon will give you step by step directions and walk through the preparation and cooking procedure.
